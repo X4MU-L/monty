@@ -2,5 +2,4 @@
 newcheck
 utils.c
 strings.c
-nodes.c
 opcode2.c
