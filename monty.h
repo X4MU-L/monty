@@ -78,6 +78,7 @@ int is_delim(const char c);
 
 /* opcode2.c */
 char *get_opcodes(char *line);
+void swap_opcode(stack_t **stack, unsigned int line_num);
 
 /* utils.c */
 int check_args(int argc, char **argv);

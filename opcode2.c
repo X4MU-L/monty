@@ -2,6 +2,33 @@
 
 
 /**
+ * swap_opcode - swap top of the stack
+ * @stack: pointer to node stack
+ * @line_num: line number of command
+ * Return: void
+ */
+
+void swap_opcode(stack_t **stack, unsigned int line_num)
+{
+	stack_t *temp;
+	int tmp_int;
+
+	temp = *stack;
+	if (!temp || !temp->next)
+	{
+		fprintf(stderr, "L%d: can't swap, stack too short\n",
+		       line_num);
+		op.error = 1;
+		return;
+	}
+
+	tmp_int = temp->n;
+	temp->n = temp->next->n;
+	temp->next->n = tmp_int;
+}
+
+
+/**
  * get_opcodes - gets the opcode an argument where necessary
  * @line: a string of chars terminated with a newline char
  *

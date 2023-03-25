@@ -118,6 +118,7 @@ int run_opcode(stack_t **stack, char *func, unsigned int line_num)
 		{"pop", pop_opcode},
 		{"pall", print_opcode},
 		{"pint", pint_opcode},
+		{"swap", swap_opcode},
 		{NULL, NULL},
 	};
 
