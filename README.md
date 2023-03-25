@@ -34,5 +34,12 @@ chukwuebuka@ubuntu:~/monty$ monty bytecodes/001.m
 2
 1
 0
+6
+5
+4
+3
+2
+1
+0
 chukwuebuka@ubuntu:~/monty$
 ```
