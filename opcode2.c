@@ -28,7 +28,7 @@ void swap_opcode(stack_t **stack, unsigned int line_num)
 }
 
 /**
- * swap_opcode - swap top of the stack
+ * add_opcode - add top of the stack
  * @stack: pointer to node stack
  * @line_num: line number of command
  * Return: void
@@ -52,6 +52,19 @@ void add_opcode(stack_t **stack, unsigned int line_num)
 	free(temp);
 }
 
+
+/**
+ * nop_opcode - does nothing
+ * @stack: pointer to node stack
+ * @line_num: line number of command
+ * Return: void
+ */
+
+void nop_opcode(stack_t **stack, unsigned int line_num)
+{
+	(void) stack;
+	(void) line_num;
+}
 
 /**
  * get_opcodes - gets the opcode an argument where necessary
