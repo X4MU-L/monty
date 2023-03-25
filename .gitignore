@@ -2,4 +2,3 @@
 newcheck
 utils.c
 strings.c
-opcode2.c
