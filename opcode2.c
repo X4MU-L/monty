@@ -27,6 +27,31 @@ void swap_opcode(stack_t **stack, unsigned int line_num)
 	temp->next->n = tmp_int;
 }
 
+/**
+ * swap_opcode - swap top of the stack
+ * @stack: pointer to node stack
+ * @line_num: line number of command
+ * Return: void
+ */
+
+void add_opcode(stack_t **stack, unsigned int line_num)
+{
+	stack_t *temp;
+
+	temp = *stack;
+	if (!temp || !temp->next)
+	{
+		fprintf(stderr, "L%d: can't add, stack too short\n",
+		       line_num);
+		op.error = 1;
+		return;
+	}
+
+	temp->next->n = temp->n + temp->next->n;
+	*stack = temp->next;
+	free(temp);
+}
+
 
 /**
  * get_opcodes - gets the opcode an argument where necessary
