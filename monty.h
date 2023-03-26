@@ -74,6 +74,11 @@ void div_opcode(stack_t **stack, unsigned int line_num);
 void mul_opcode(stack_t **stack, unsigned int line_num);
 void mod_opcode(stack_t **stack, unsigned int line_num);
 void pchar_opcode(stack_t **stack, unsigned int line_num);
+void pstr_opcode(stack_t **stack, unsigned int line_num);
+
+/* opcode4.c */
+void rotl_opcode(stack_t **stack, unsigned int line_num);
+void rotr_opcode(stack_t **stack, unsigned int line_num);
 
 /* nodes.c */
 stack_t *add_node_start(stack_t **head, int n);

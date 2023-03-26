@@ -126,6 +126,9 @@ int run_opcode(stack_t **stack, char *func, unsigned int line_num)
 		{"mod", mod_opcode},
 		{"nop", nop_opcode},
 		{"pchar", pchar_opcode},
+		{"pstr", pstr_opcode},
+		{"rotl", rotl_opcode},
+		{"rotr", rotr_opcode},
 		{NULL, NULL},
 	};
 
