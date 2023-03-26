@@ -79,5 +79,5 @@ int is_comment_or_empty(char c)
  */
 int is_printable_ascii(int c)
 {
-	return (c >= 0 && c <= 126);
+	return (c >= 0 && c <= 127);
 }
