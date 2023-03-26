@@ -73,6 +73,7 @@ void sub_opcode(stack_t **stack, unsigned int line_num);
 void div_opcode(stack_t **stack, unsigned int line_num);
 void mul_opcode(stack_t **stack, unsigned int line_num);
 void mod_opcode(stack_t **stack, unsigned int line_num);
+void pchar_opcode(stack_t **stack, unsigned int line_num);
 
 /* nodes.c */
 stack_t *add_node_start(stack_t **head, int n);
@@ -91,6 +92,7 @@ int is_numbers(char *s);
 int run_monty(FILE *fd);
 void set_op(void);
 int is_comment_or_empty(char c);
+int is_printable_ascii(int c);
 
 /* errors.c */
 int usage_error(void);

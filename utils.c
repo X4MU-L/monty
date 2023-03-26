@@ -71,3 +71,13 @@ int is_comment_or_empty(char c)
 	}
 	return (0);
 }
+
+/**
+ * is_printable_ascii - ascii values
+ * @c: int to check
+ * Return: 1 if ascii or 0
+ */
+int is_printable_ascii(int c)
+{
+	return (c >= 0 && c <= 126);
+}
