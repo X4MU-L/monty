@@ -7,7 +7,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-#define OP_INIT {0, 0, 0, NULL}
+#define OP_INIT {0, 1, NULL}
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -51,8 +51,7 @@ typedef struct instruction_s
 typedef struct op_s
 {
 	int error;
-	int overflow;
-	int underflow;
+	int is_stack;
 	char *value;
 } op_t;
 
@@ -75,6 +74,7 @@ int _strcmp(char *s1, char *s2);
 int _strlen(const char *s);
 int is_digit(char c);
 int is_delim(const char c);
+int is_numbers(char *s);
 
 /* opcode2.c */
 char *get_opcodes(char *line);
@@ -83,7 +83,12 @@ void add_opcode(stack_t **stack, unsigned int line_num);
 void nop_opcode(stack_t **stack, unsigned int line_num);
 
 /* utils.c */
-int check_args(int argc, char **argv);
+int run_monty(FILE *fd);
 void set_op(void);
+int is_comment_or_empty(char c);
+
+/* errors.c */
+int usage_error(void);
+int file_open_error(char *file);
 
 #endif /* MONTY_H */

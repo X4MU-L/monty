@@ -37,19 +37,19 @@ stack_t *add_node_start(stack_t **head, int n)
  * remove_node_start - delete a node from top of the stack
  * @stack: pointer to the stack
  *
- * Return: return 0 on success and -1 on failure
+ * Return: return 1 on success and 0 on failure
  */
 int remove_node_start(stack_t **stack)
 {
 	stack_t *temp;
 
 	if (!stack || !*stack)
-		return (-1);
+		return (0);
 
 	temp = *stack;
 	*stack = temp->next;
 	free(temp);
-	return (0);
+	return (1);
 }
 
 /**
@@ -73,7 +73,7 @@ void free_stack(stack_t *head)
  * @head: pointer to stack node
  * @str: pointer to char
  * @stream: FILE descriptor
- * Return: void
+ * Return: always EXIT_SUCCESS
  */
 
 int exit_free(stack_t *head, char *str, FILE *stream)
@@ -82,5 +82,5 @@ int exit_free(stack_t *head, char *str, FILE *stream)
 	free(str);
 	fclose(stream);
 
-	return (0);
+	return (EXIT_SUCCESS);
 }

@@ -30,7 +30,7 @@ void pint_opcode(stack_t **stack, unsigned int line_num)
 
 void pop_opcode(stack_t **stack, unsigned int line_num)
 {
-	if (remove_node_start(stack))
+	if (!remove_node_start(stack))
 	{
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line_num);
 		op.error = 1;
@@ -77,7 +77,7 @@ void push_opcode(stack_t **stack, unsigned int line_num)
 	char *n;
 
 	n = op.value;
-	if (!is_digit(*n) || !n)
+	if (!is_numbers(n) || !n)
 	{
 		if (n)
 			free(n);
@@ -135,8 +135,8 @@ int run_opcode(stack_t **stack, char *func, unsigned int line_num)
 		}
 	}
 	if (instruction[i].f == NULL)
-		fprintf(stderr, "L%d: unknown instruction %s\n", line_num, func);
+		fprintf(stderr, "L%d: unknown instruction %s\n", line_num,
+			func);
 	return (-1);
 
 }
-

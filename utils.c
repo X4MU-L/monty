@@ -1,31 +1,48 @@
 #include "monty.h"
+
 /**
- * check_args - checks if correct arguments were passed
- * to the function call
- * @argc: number of arguments passed to the function
- * @argv: pointer to the array of arguments passed
- * Return: 0 on success else exit with failure code
+ * run_monty - runs a monty interpreter
+ * @fd: pointer to an open file descriptor
+ * Return: (EXIT_SUCCESS) on success else (EXIT_SUCCESS)
  */
-int check_args(int argc, char **argv)
+
+int run_monty(FILE* fd)
 {
-	struct stat buffer;
+	stack_t *stack = NULL;
+	size_t line_num = 1, len = 0, i = 0;
+	ssize_t read;
+	char *line = NULL, *func;
 
-	if (argc != 2)
+	for (; (read = getline(&line, &len, fd)) != -1; line_num++)
 	{
-		fprintf(stderr, "USAGE: monty file\n");
-		exit(EXIT_FAILURE);
+		i = 0;
+		while (is_delim(line[i]) && line[i] != '\n')
+			i++;
+		if (!is_comment_or_empty(line[i]))
+		{
+			func = get_opcodes(line + i);
+			if (!func)
+			{
+				fprintf(stderr, "Error: malloc failed\n");
+				free(line);
+				fclose(fd);
+				return (EXIT_FAILURE);
+			}
+			if (run_opcode(&stack, func, line_num) != 0)
+			{
+				free(func);
+				exit_free(stack, line, fd);
+				set_op();
+				return (EXIT_FAILURE);
+			}
+			free(func);
+			set_op();
+		}
 	}
-	if (stat(argv[1], &buffer) != 0)
-	{
-		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
-		exit(EXIT_FAILURE);
-	}
-	return (0);
+	return (exit_free(stack, line, fd));
 }
-
 /**
  * set_op - resets the op struct
- *
  * Return: void
  */
 void set_op(void)
@@ -34,6 +51,18 @@ void set_op(void)
 		free(op.value);
 	op.value = NULL;
 	op.error = 0;
-	op.overflow = 0;
-	op.underflow = 0;
+}
+
+int is_comment_or_empty(char c)
+{
+	char *var = "#\n";
+	int i = 0;
+
+	while (var[i])
+	{
+		if (c == var[i])
+			return (1);
+		i++;
+	}
+	return (0);
 }

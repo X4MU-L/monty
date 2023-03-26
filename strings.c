@@ -37,7 +37,7 @@ int _strcmp(char *str1, char *str2)
  */
 int is_digit(char c)
 {
-	return (c >= '0' && c <= '9');
+	return ((c >= '0' && c <= '9'));
 }
 
 /**
@@ -48,11 +48,24 @@ int is_digit(char c)
 int is_delim(const char c)
 {
 	int i = 0;
-	char *delim = " \t";
+	char *delim = " \t\a\b";
 
 	while (c != delim[i] && delim[i])
 		i++;
 	if (delim[i])
 		return (1);
 	return (0);
+}
+
+int is_numbers(char *str)
+{
+	int i = 0;
+
+	while(str[i])
+	{
+		if (!is_digit(str[i]))
+		    return (0);
+		i++;
+	}
+	return (1);
 }
