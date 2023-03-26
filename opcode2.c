@@ -47,7 +47,32 @@ void add_opcode(stack_t **stack, unsigned int line_num)
 		return;
 	}
 
-	temp->next->n = temp->n + temp->next->n;
+	temp->next->n += temp->n;
+	*stack = temp->next;
+	free(temp);
+}
+
+/**
+ * sub_opcode - subs second top of the stack from the top
+ * @stack: pointer to node stack
+ * @line_num: line number of command
+ * Return: void
+ */
+
+void sub_opcode(stack_t **stack, unsigned int line_num)
+{
+	stack_t *temp;
+
+	temp = *stack;
+	if (!temp || !temp->next)
+	{
+		fprintf(stderr, "L%d: can't sub, stack too short\n",
+		       line_num);
+		op.error = 1;
+		return;
+	}
+
+	temp->next->n -= temp->n;
 	*stack = temp->next;
 	free(temp);
 }

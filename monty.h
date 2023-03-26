@@ -62,6 +62,18 @@ void print_opcode(stack_t **stack, unsigned int line_num);
 void pint_opcode(stack_t **stack, unsigned int line_num);
 int run_opcode(stack_t **stack, char *func, unsigned int line_num);
 
+/* opcode2.c */
+char *get_opcodes(char *line);
+void swap_opcode(stack_t **stack, unsigned int line_num);
+void add_opcode(stack_t **stack, unsigned int line_num);
+void nop_opcode(stack_t **stack, unsigned int line_num);
+void sub_opcode(stack_t **stack, unsigned int line_num);
+
+/* opcode3.c */
+void div_opcode(stack_t **stack, unsigned int line_num);
+void mul_opcode(stack_t **stack, unsigned int line_num);
+void mod_opcode(stack_t **stack, unsigned int line_num);
+
 /* nodes.c */
 stack_t *add_node_start(stack_t **head, int n);
 int remove_node_start(stack_t **stack);
@@ -74,12 +86,6 @@ int _strlen(const char *s);
 int is_digit(char c);
 int is_delim(const char c);
 int is_numbers(char *s);
-
-/* opcode2.c */
-char *get_opcodes(char *line);
-void swap_opcode(stack_t **stack, unsigned int line_num);
-void add_opcode(stack_t **stack, unsigned int line_num);
-void nop_opcode(stack_t **stack, unsigned int line_num);
 
 /* utils.c */
 int run_monty(FILE *fd);
