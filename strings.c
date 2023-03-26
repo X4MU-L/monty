@@ -1,4 +1,5 @@
 #include "monty.h"
+
 /**
  * _strlen - gets the length of a string
  * @s: pointer to a string to get length
@@ -57,14 +58,19 @@ int is_delim(const char c)
 	return (0);
 }
 
+/**
+ * is_numbers - checks if a string of chars are numbers
+ * @str: pointer to array of chars
+ * Return: 1 if numbers else 0
+ */
 int is_numbers(char *str)
 {
 	int i = 0;
 
-	while(str[i])
+	while (str[i])
 	{
 		if (!is_digit(str[i]))
-		    return (0);
+			return (0);
 		i++;
 	}
 	return (1);

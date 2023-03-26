@@ -42,8 +42,7 @@ typedef struct instruction_s
 /**
  * struct op_s - opcode errors and flags
  * @error: sets error flag
- * @overflow: sets stack overflow
- * @underflow: sets stack underflow
+ * @is_stack: sets stack or queue flow
  * @value: argument to opcode instuction if any
  * Description: errors for stack, queues, LIFO, FIFO
  */

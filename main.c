@@ -1,5 +1,6 @@
 #include "monty.h"
 
+op_t op = OP_INIT;
 /**
  * main - entry point
  * @argc: number of argument passed to the function call
@@ -9,7 +10,6 @@
  * Return: (EXIT_SUCCESS) on success else (EXIT_FAILURE)
  */
 
-op_t op = OP_INIT;
 int main(int argc, char **argv)
 {
 	FILE *fd;

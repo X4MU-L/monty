@@ -6,7 +6,7 @@
  * Return: (EXIT_SUCCESS) on success else (EXIT_SUCCESS)
  */
 
-int run_monty(FILE* fd)
+int run_monty(FILE *fd)
 {
 	stack_t *stack = NULL;
 	size_t line_num = 1, len = 0, i = 0;
@@ -53,6 +53,11 @@ void set_op(void)
 	op.error = 0;
 }
 
+/**
+ * is_comment_or_empty - checks for # or \n at the beggining of file
+ * @c: character to check
+ * Return: 1 if comment or newline else 0
+ */
 int is_comment_or_empty(char c)
 {
 	char *var = "#\n";
