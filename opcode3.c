@@ -132,7 +132,7 @@ void pstr_opcode(stack_t **stack, unsigned int line_num)
 	temp = *stack;
 	while (temp && temp->n != 0 && (is_printable_ascii(temp->n)))
 	{
-		printf("%c", tmp->n);
+		printf("%c", temp->n);
 		temp = temp->next;
 	}
 
