@@ -17,7 +17,7 @@ void pint_opcode(stack_t **stack, unsigned int line_num)
 		op.error = 1;
 		return;
 	}
-
+	printf("%d\n", (*stack)->n);
 }
 /**
  * pop_opcode - pop the first node on the stack
