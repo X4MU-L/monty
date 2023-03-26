@@ -117,3 +117,24 @@ void pchar_opcode(stack_t **stack, unsigned int line_num)
 
 	printf("%c\n", temp->n);
 }
+
+/**
+ * pstr_opcode - prints the chars at the stack terminated by 0
+ * @stack: pointer to node stack
+ * @line_num: line number of command
+ * Return: void
+ */
+void pstr_opcode(stack_t **stack, unsigned int line_num)
+{
+	stack_t *temp;
+	(void) line_num;
+
+	temp = *stack;
+	while (temp && temp->n != 0 && (is_printable_ascii(temp->n)))
+	{
+		printf("%c", tmp->n);
+		temp = temp->next;
+	}
+
+	printf("\n");
+}
