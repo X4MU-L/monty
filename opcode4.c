@@ -53,3 +53,31 @@ void rotr_opcode(stack_t **stack, unsigned int line_num)
 		}
 	}
 }
+
+/**
+ * stack_opcode - sets the node to a LIFO (stack)
+ * @stack: pointer to node stack
+ * @line_num: line number of command
+ * Return: void
+ */
+
+void stack_opcode(stack_t **stack, unsigned int line_num)
+{
+	(void) stack;
+	(void) line_num;
+	op.is_stack = 1;
+}
+
+/**
+ * queue_opcode - sets the node to a FILO (queue)
+ * @stack: pointer to node stack
+ * @line_num: line number of command
+ * Return: void
+ */
+
+void queue_opcode(stack_t **stack, unsigned int line_num)
+{
+	(void) stack;
+	(void) line_num;
+	op.is_stack = 0;
+}

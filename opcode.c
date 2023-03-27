@@ -81,18 +81,26 @@ void push_opcode(stack_t **stack, unsigned int line_num)
 	{
 		if (n)
 			free(n);
-		fprintf(stderr, "L%d: usage: push integer\n", line_num);
-		op.error = 1;
-		op.value = NULL;
+		int_usage_error(line_num);
 		return;
 	}
-	if (add_node_start(stack, atoi(n)) == NULL)
+	if (op.is_stack)
 	{
-		fprintf(stderr, "Error: malloc failed\n");
-		op.error = 1;
-		free(n);
-		op.value = NULL;
-		return;
+		if (add_node_start(stack, atoi(n)) == NULL)
+		{
+			free(n);
+			malloc_error();
+			return;
+		}
+	}
+	else
+	{
+		if (add_node_end(stack, atoi(n)) == NULL)
+		{
+			free(n);
+			malloc_error();
+			return;
+		}
 	}
 	free(n);
 	op.value = NULL;
@@ -129,6 +137,8 @@ int run_opcode(stack_t **stack, char *func, unsigned int line_num)
 		{"pstr", pstr_opcode},
 		{"rotl", rotl_opcode},
 		{"rotr", rotr_opcode},
+		{"stack", stack_opcode},
+		{"queue", queue_opcode},
 		{NULL, NULL},
 	};
 
