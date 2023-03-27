@@ -67,6 +67,8 @@ int is_numbers(char *str)
 {
 	int i = 0;
 
+	if (!str)
+		return (0);
 	while (str[i])
 	{
 		if (!is_digit(str[i]))
