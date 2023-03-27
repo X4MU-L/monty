@@ -36,7 +36,6 @@ void rotl_opcode(stack_t **stack, unsigned int line_num)
 void rotr_opcode(stack_t **stack, unsigned int line_num)
 {
 	stack_t *bottom, *top;
-	int tmp_int;
 	(void) line_num;
 
 	bottom = top = *stack;
