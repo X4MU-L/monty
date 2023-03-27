@@ -109,7 +109,7 @@ void pchar_opcode(stack_t **stack, unsigned int line_num)
 	}
 	if (!is_printable_ascii(temp->n))
 	{
-		fprintf(stderr, "L%d: cant't pchar, value out of range\n",
+		fprintf(stderr, "L%d: can't pchar, value out of range\n",
 			line_num);
 		op.error = 1;
 		return;
