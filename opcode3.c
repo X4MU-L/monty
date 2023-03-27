@@ -100,7 +100,7 @@ void pchar_opcode(stack_t **stack, unsigned int line_num)
 	stack_t *temp;
 
 	temp = *stack;
-	if (!temp || !temp->next)
+	if (!temp)
 	{
 		fprintf(stderr, "L%d: can't pchar, stack empty\n",
 		       line_num);
