@@ -12,9 +12,6 @@ stack_t *add_node_start(stack_t **head, int n)
 {
 	stack_t *new, *temp;
 
-	if (!head)
-		return (NULL);
-
 	temp = *head;
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
@@ -30,6 +27,37 @@ stack_t *add_node_start(stack_t **head, int n)
 	temp->prev = new;
 	new->next = temp;
 	*head = new;
+	return (new);
+}
+
+/**
+ * add_node_end - add a node to the end on the stack
+ * @head: a pointer to the stack
+ * @n: int data to add to the stack
+ *
+ * Return: return a pointer to the new node
+ */
+
+stack_t *add_node_end(stack_t **head, int n)
+{
+	stack_t *new, *temp;
+
+	temp = *head;
+	new = malloc(sizeof(stack_t));
+	if (new == NULL)
+		return (NULL);
+	new->n = n;
+	new->next = NULL;
+	if (!temp)
+	{
+		new->prev = NULL;
+		*head = new;
+		return (new);
+	}
+	while (temp->next)
+		temp = temp->next;
+	temp->next = new;
+	new->prev = temp;
 	return (new);
 }
 
