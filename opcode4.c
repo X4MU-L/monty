@@ -35,21 +35,21 @@ void rotl_opcode(stack_t **stack, unsigned int line_num)
 
 void rotr_opcode(stack_t **stack, unsigned int line_num)
 {
-	stack_t *temp;
+	stack_t *bottom, *top;
 	int tmp_int;
 	(void) line_num;
 
-	temp = *stack;
-	if (temp)
+	bottom = top = *stack;
+	if (bottom)
 	{
-		if (temp->next)
+		if (bottom->next)
 		{
-			tmp_int = (*stack)->n;
-			while (temp->next)
-				temp = temp->next;
-
-			(*stack)->n = temp->n;
-			temp->n = tmp_int;
+			*stack = bottom->next;
+			while (bottom->next)
+				bottom = bottom->next;
+			bottom->next = top;
+			top->prev = bottom;
+			top->next = NULL;
 		}
 	}
 }
