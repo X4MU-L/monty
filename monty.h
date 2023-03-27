@@ -79,12 +79,15 @@ void pstr_opcode(stack_t **stack, unsigned int line_num);
 /* opcode4.c */
 void rotl_opcode(stack_t **stack, unsigned int line_num);
 void rotr_opcode(stack_t **stack, unsigned int line_num);
+void stack_opcode(stack_t **stack, unsigned int line_num);
+void queue_opcode(stack_t **stack, unsigned int line_num);
 
 /* nodes.c */
 stack_t *add_node_start(stack_t **head, int n);
 int remove_node_start(stack_t **stack);
 void free_stack(stack_t *stack);
 int exit_free(stack_t *head, char *str, FILE *stream);
+stack_t *add_node_end(stack_t **head, int n);
 
 /* string.c */
 int _strcmp(char *s1, char *s2);
@@ -102,5 +105,7 @@ int is_printable_ascii(int c);
 /* errors.c */
 int usage_error(void);
 int file_open_error(char *file);
+void int_usage_error(unsigned int line_num);
+void malloc_error(void);
 
 #endif /* MONTY_H */
